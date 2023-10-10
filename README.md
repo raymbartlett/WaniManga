@@ -15,8 +15,8 @@ An app to aid in Japanese immersion by judging the user's difficulty in reading 
 </details>
 
 ## Setup Tutorial
-1. Add WaniKani key to update_wk_kanji.py and run `python update_wk_kanji.py` (optional)
-2. Run `pip install -r requirements.txt`
+1. Run `pip install -r requirements.txt`
+2. Add WaniKani key to update_wk_kanji.py and run `python update_wk_kanji.py` (optional)
 3. Run `flask run`
 
 ## Notes
