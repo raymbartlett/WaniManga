@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>WaniManga - Upload</title>
+    <meta name="description" content="Manga difficulty level">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/index-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>WaniManga</h1>
+        <form method="post" enctype="multipart/form-data" action="/">
+            <div class="input-row">
+                <input type="text" name="text-input" placeholder="WaniKani key (optional)">
+            </div>
+            <div class="input-row">
+                <input type="file" name="file-input" accept=".cbz, .cbr">
+            </div>
+            <input type="submit" value="Continue">
+        </form>
+
+        <div class="footer">
+            <p>Created by <a href="https://github.com/raymbartlett" target="_blank">Ray Bartlett</a></p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

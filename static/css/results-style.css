@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'CCWildWords';
+    src: url('/static/fonts/ccwildwords.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Meiryo';
+    src: url('/static/fonts/meiryo.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    display: flex;
+}
+
+.container {
+    font-family: 'CCWildWords', sans-serif;
+    display: flex;
+}
+
+.left {
+    width: 18vw;
+    background-color: #f0f0f0;
+    padding: 1vw;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#home {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family: 'CCWildWords', sans-serif;
+    font-size: 1vw;
+    text-align: center;
+    color: #050705;
+    background-color: #F52BA7;
+    border-color: #050705;
+    border-radius: 25px;
+    padding: 3px 15px;
+    margin: 0 auto;
+    display: block;
+}
+
+.left p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.right {
+    width: 78vw;
+    margin: 1vw;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: 10px;
+    margin: 20px;
+    padding-bottom: 50px;
+}
+
+.chart {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.japanese-text {
+    font-family: 'Meiryo', sans-serif !important;
+    font-size: large !important;
+}

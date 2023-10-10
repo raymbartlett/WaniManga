@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WaniManga - Results</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/results-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <button id="home">home</button>
+            <script>
+                document.getElementById("home").onclick = function () {
+                    var URL = "/"
+                    window.open(URL, "_self");
+                };
+            </script>
+            <h1>{{ stats.filename }}</h1>
+            <img src="data:image/jpeg;base64,{{ stats.cover }}" alt="First Page">
+            <h3>~ {{ stats.difficulty }} ~</h3>
+            <p>{{ stats.total_kanji}} kanji</p>
+            <p>{{ stats.num_known }} known</p>
+            <p>{{ stats.num_unknown }} unknown</p>
+        </div>
+
+        <div class="right">
+            <div class="chart-container">
+                <div class="chart">
+                    <canvas id="knownPieChart" width="200" height="200"></canvas>
+                    <script>
+                        var ctx = document.getElementById("knownPieChart").getContext("2d");
+
+                        var data = {
+                            labels: ["Known", "Unknown"],
+                            datasets: [{
+                                data: [
+                                    {{ stats.num_known }},
+                            {{ stats.num_unknown }},
+                            ],
+                        backgroundColor: ["#f0f0f0", "#212121"],
+                            borderColor: "#000000",
+                                borderWidth: 1,
+                        }]
+                    };
+
+                        var options = {
+                            responsive: false,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: "Known vs. Unknown",
+                                    fontSize: 18,
+                                },
+                            },
+                        };
+
+                        var knownPieChart = new Chart(ctx, {
+                            type: "pie",
+                            data: data,
+                            options: options
+                        });
+                    </script>
+                </div>
+
+                <div class="chart">
+                    <canvas id="jlptPieChart" width="200" height="200"></canvas>
+                    <script>
+                        var ctx = document.getElementById("jlptPieChart").getContext("2d");
+
+                        var jlpt = {{ kanji_data.by_jlpt_level| tojson | safe }}
+                        var data = {
+                            labels: ["N5", "N4", "N3", "N2", "N1", "Not on JLPT"],
+                            datasets: [{
+                                data: [
+                                    jlpt["N5"].length,
+                                    jlpt["N4"].length,
+                                    jlpt["N3"].length,
+                                    jlpt["N2"].length,
+                                    jlpt["N1"].length,
+                                    jlpt["Not on JLPT"].length,
+                                ],
+                                backgroundColor: ["#0e6eb8", "#01a69f", "#8fc320", "#f28d01", "#e5007f", "#454545"],
+                                borderColor: "#000000",
+                                borderWidth: 1,
+                            }]
+                        };
+
+                        var options = {
+                            responsive: false,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: "JLPT Levels",
+                                    fontSize: 18,
+                                },
+                            },
+                        };
+
+                        var jlptPieChart = new Chart(ctx, {
+                            type: "pie",
+                            data: data,
+                            options: options
+                        });
+                    </script>
+                </div>
+
+                <div class="chart">
+                    <canvas id="joyoPieChart" width="200" height="200"></canvas>
+                    <script>
+                        var ctx = document.getElementById("joyoPieChart").getContext("2d");
+
+                        var joyo = {{ kanji_data.by_joyo_level| tojson | safe }}
+                        var data = {
+                            labels: ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6", "Grade 9", "Not in Jōyō"],
+                            datasets: [{
+                                data: [
+                                    joyo["1"].length,
+                                    joyo["2"].length,
+                                    joyo["3"].length,
+                                    joyo["4"].length,
+                                    joyo["5"].length,
+                                    joyo["6"].length,
+                                    joyo["9"].length,
+                                    joyo["Not in Jōyō"].length,
+                                ],
+                                backgroundColor: ["#FF0000", "#FFFF00", "#008000", "#0000FF", "#4B0082", "#800080", "#292929", "#454545"],
+                                borderColor: "#000000",
+                                borderWidth: 1,
+                            }]
+                        };
+
+                        var options = {
+                            responsive: false,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: "Jōyō Levels",
+                                    fontSize: 18,
+                                },
+                            },
+                        };
+
+                        var joyoPieChart = new Chart(ctx, {
+                            type: "pie",
+                            data: data,
+                            options: options
+                        });
+                    </script>
+                </div>
+
+                <div class="chart">
+                    <canvas id="frequencyPieChart" width="200" height="200"></canvas>
+                    <script>
+                        var ctx = document.getElementById("frequencyPieChart").getContext("2d");
+
+                        var freq = {{ kanji_data.by_frequency| tojson | safe }}
+                        var data = {
+                            labels: ["1-500", "501-1000", "1001-1500", "1501-2000", "2001-2500", "Not in top 2500"],
+                            datasets: [{
+                                data: [
+                                    freq["1-500"].length,
+                                    freq["501-1000"].length,
+                                    freq["1001-1500"].length,
+                                    freq["1501-2000"].length,
+                                    freq["2001-2500"].length,
+                                    freq["Not in top 2500"].length,
+                                ],
+                                backgroundColor: ["#B95C5C", "#5C905C", "#5C6E95", "#8C5C95", "#B9835C", "#454545"],
+                                borderColor: "#000000",
+                                borderWidth: 1,
+                            }]
+                        };
+
+                        var options = {
+                            responsive: false,
+                            plugins: {
+                                legend: {
+                                    display: false,
+                                },
+                                title: {
+                                    display: true,
+                                    text: "Frequency",
+                                    fontSize: 18,
+                                },
+                            },
+                        };
+
+                        var frequencyPieChart = new Chart(ctx, {
+                            type: "pie",
+                            data: data,
+                            options: options
+                        });
+                    </script>
+                </div>
+            </div>
+
+            {% if stats.difficulty != "Invalid WaniKani Key" %}
+            <h1>Known kanji in source:</h1>
+            <p class="japanese-text">{{ kanji_data.known_in_source|join(", ") }}</p>
+            <h1>Unknown kanji in source:</h1>
+            <p class="japanese-text">{{ kanji_data.unknown_in_source|join(", ") }}</p>
+            {% endif %}
+            <h1>Source kanji by WaniKani Level:</h1>
+            <ul>
+                {% for level, results in kanji_data.by_wk_level.items() %}
+                <li class="japanese-text">{{ level }}: {{ results|join(", ") }}</li>
+                {% endfor %}
+            </ul>
+            <h1>Source kanji by JLPT Level:</h1>
+            <ul>
+                {% for level, results in kanji_data.by_jlpt_level.items() %}
+                <li class="japanese-text">{{ level }}: {{ results|join(", ") }}</li>
+                {% endfor %}
+            </ul>
+            <h1>Source kanji by Jōyō Level:</h1>
+            <ul>
+                {% for level, results in kanji_data.by_joyo_level.items() %}
+                <li class="japanese-text">{{ level }}: {{ results|join(", ") }}</li>
+                {% endfor %}
+            </ul>
+            <h1>Source kanji by Frequency:</h1>
+            <ul>
+                {% for level, results in kanji_data.by_frequency.items() %}
+                <li class="japanese-text">{{ level }}: {{ results|join(", ") }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

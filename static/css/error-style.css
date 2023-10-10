@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'CCWildWords';
+    src: url('/static/fonts/ccwildwords.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-image: url("/static/images/error-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    font-family: 'CCWildWords', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #F52BA7;
+    -webkit-text-stroke: .2vw #000000;
+    font-size: 4vw;
+}
+
+h2 {
+    color: #F52BA7;
+    -webkit-text-stroke: .1vw #000000;
+    font-size: 3vw;
+    margin-top: 1vh;
+}
+
+button {
+    font-family: 'CCWildWords', sans-serif;
+    font-size: 2vw;
+    text-align: center;
+    color: #050705;
+    background-color: #F52BA7;
+    border-color: #050705;
+    border-radius: 25px;
+    padding: 3px 15px;
+    margin: 0 auto;
+    display: block;
+}

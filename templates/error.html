@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WaniManga - Error</title>
+    <meta name="description" content="Manga difficulty level">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/error-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>ERROR</h1>
+        <h2>{{ message }}</h2>
+        <button id="home">home</button>
+        <script>
+            document.getElementById("home").onclick = function () {
+                var URL = "/"
+                window.open(URL, "_self");
+            };
+        </script>
+    </div>
+</body>
+
+</html>

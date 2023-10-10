@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'CCWildWords';
+    src: url('/static/fonts/ccwildwords.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, h1, form {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url("/static/images/background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+	background-color: #000000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.container {
+	font-family: 'CCWildWords', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	color: #F52BA7;
+	-webkit-text-stroke: .1vw #000000;
+	font-size: 4vw;
+	margin-bottom: 1vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-row {
+	background-color: #ffffff;
+	width: 168px;
+    margin-bottom: 1vh;
+    display: inline-flex;
+    justify-content: center;
+	align-items: center;
+}
+
+input[type="submit"] {
+    font-family: 'CCWildWords', sans-serif;
+    font-size: 1vw;
+    text-align: center;
+    color: #050705;
+    background-color: #F52BA7;
+    border-color: #050705;
+    border-radius: 25px;
+    padding: 3px 15px;
+    margin: 0 auto;
+    display: block;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #F52BA7;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.footer a {
+    text-decoration: underline;
+    color: #F52BA7;
+}
