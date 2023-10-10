@@ -8,9 +8,9 @@ An app to aid in Japanese immersion by judging the user's difficulty in reading 
 5. Frequency
 
 <details>
-<summary>View home page</summary>
+<summary>View results page</summary>
 
-![Home page](/static/images/homepage.png)
+![Results page](/static/images/homepage.png)
 
 </details>
 
